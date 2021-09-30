@@ -1104,7 +1104,6 @@ namespace GruntExecutor
                 return sb.ToString();
             }
         }
-        string GruntEncryptedMessageFormat = GetGruntEncryptedMessageFormat;
         
         public static GruntEncryptedMessage FromJson(string message)
         {
