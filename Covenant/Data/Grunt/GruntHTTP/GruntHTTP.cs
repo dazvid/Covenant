@@ -1091,7 +1091,19 @@ namespace GruntExecutor
             }
         }
 
-        private static string GruntEncryptedMessageFormat = @"{{""GUID"":""{0}"",""Type"":{1},""Meta"":""{2}"",""IV"":""{3}"",""EncryptedMessage"":""{4}"",""HMAC"":""{5}""}}";
+        private static string GruntEncryptedMessageFormat
+        {
+            get
+            {
+                var sb = new StringBuilder(@"{{""GUID"":""{0}"",");
+                sb.Append(@"""Type"":{1},");
+                sb.Append(@"""Meta"":""{2}"",");
+                sb.Append(@"""IV"":""{3}"",");
+                sb.Append(@"""EncryptedMessage"":""{4}"",");
+                sb.Append(@"""HMAC"":""{5}""}}");
+                return sb.ToString();
+            }
+        }
         public static GruntEncryptedMessage FromJson(string message)
         {
 			List<string> parseList = Utilities.Parse(message, GruntEncryptedMessageFormat);
