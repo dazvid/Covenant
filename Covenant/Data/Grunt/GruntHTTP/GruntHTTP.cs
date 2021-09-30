@@ -1091,7 +1091,7 @@ namespace GruntExecutor
             }
         }
 
-        private static string GetGruntEncryptedMessageFormat
+        private static string GruntEncryptedMessageFormat
         {
             get
             {
